@@ -2,6 +2,8 @@ package GestionCosasUsuario;
 
 import java.util.ArrayList;
 
+import Logica.Usuario;
+
 //import logicaUsuario;
 
 public class GestionArrayList{
@@ -31,11 +33,11 @@ public class GestionArrayList{
 		while(!enc && pos<a.size()){
 			
 			Usuario u = a.get(pos);
-			if(u.getNom().equalsIgnoreCase(nom) && u.getContrasenia().equals(con)){	
+			if(u.getNom().equalsIgnoreCase(nom) && u.getContraseña().equals(con)){	
 				enc=true;
 				resul=pos;
 			}
-			else if(u.getNom().equalsIgnoreCase(nom) && !u.getContrasenia().equals(con)){	
+			else if(u.getNom().equalsIgnoreCase(nom) && !u.getContraseña().equals(con)){	
 				resul=-1;
 				enc=true;
 			}

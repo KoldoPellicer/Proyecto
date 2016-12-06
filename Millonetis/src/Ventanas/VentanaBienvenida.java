@@ -8,6 +8,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.border.EmptyBorder;
+
+import java.awt.Dimension;
+import java.awt.Graphics;
+import javax.swing.ImageIcon;
+
+import GestionCosasUsuario.GestionArrayList;
+import GestionCosasUsuario.GestionFicheros;
+import Logica.Usuario;
+
 import javax.swing.JLabel;
 
 import java.awt.Font;
@@ -102,13 +111,13 @@ public class VentanaBienvenida extends JFrame implements ActionListener{
 		
 		/*Boton de "Aceptar"*/
 		btnAceptar = new JButton("ACEPTAR");
-		btnAceptar.setBounds(362, 7, 99, 23);
+		btnAceptar.setBounds(362, 7, 105, 23);
 		panelCentro.add(btnAceptar);
 		
 		/*Boton de "Registrate"*/
 		btnRegistrate = new JButton("REG\u00CDSTRATE");
 		btnRegistrate.setVisible(false);
-		btnRegistrate.setBounds(362, 32, 99, 23);
+		btnRegistrate.setBounds(362, 32, 105, 23);
 		panelCentro.add(btnRegistrate);
 		
 		/*DNI*/
@@ -139,13 +148,13 @@ public class VentanaBienvenida extends JFrame implements ActionListener{
 		
 		/*Contraseña*/
 		lblContraseña = new JLabel("Contrase\u00F1a:");
-		lblContraseña.setBounds(10, 179, 74, 14);
+		lblContraseña.setBounds(10, 148, 65, 14);
 		lblContraseña.setVisible(false);
 		panelCentro.add(lblContraseña);
 		
 		//Recuadro para escribir la Contraseña
 		passContraseña = new JPasswordField();
-		passContraseña.setBounds(96, 176, 99, 20);
+		passContraseña.setBounds(96, 145, 99, 20);
 		passContraseña.setVisible(false);
 		panelCentro.add(passContraseña);
 		passContraseña.setColumns(10);
@@ -161,7 +170,7 @@ public class VentanaBienvenida extends JFrame implements ActionListener{
 		contentPanel.add(panelNorte, BorderLayout.NORTH);
 		
 		/*Bienvendido*/
-		JLabel lblTitulo = new JLabel("Bienvenido a MyShare");
+		JLabel lblTitulo = new JLabel("Bienvenido a ¿Quieres ser Millonetis?");
 		lblTitulo.setFont(new Font("Comic Sans MS", Font.BOLD, 16));
 		panelNorte.add(lblTitulo);
 		
@@ -236,6 +245,14 @@ public class VentanaBienvenida extends JFrame implements ActionListener{
 		});
 		
 	}
+	
+	//Imagen de fondo
+	public void paintComponent (Graphics g){
+		Dimension tamaño = getSize();
+		ImageIcon imagenFondo = new ImageIcon(getClass().getResource("/Imagenes/Millonario.png"));
+		g.drawImage(imagenFondo.getImage(),0,0,tamaño.width, tamaño.height, null);
+		paintComponent(g);
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -247,12 +264,12 @@ public class VentanaBienvenida extends JFrame implements ActionListener{
 			if(pos==-2){
 				
 				//Error en nombre de usuario
-				JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto", "ERROR", "Allahu akbar incoming", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Nombre de usuario incorrecto", "ERROR, Allahu akbar!!", JOptionPane.ERROR_MESSAGE);
 				btnRegistrate.setVisible(true);
 			}
 			else if(pos==-1){
 				//Error en contraseña
-				JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "ERROR", "Allahu akbar incoming", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Contraseña incorrecta", "ERROR, Allahu akbar!!", JOptionPane.ERROR_MESSAGE);
 				txtContraseñaUsuario.setText("");
 			}
 			
@@ -260,7 +277,7 @@ public class VentanaBienvenida extends JFrame implements ActionListener{
 				
 				txtNombreUsuario.setText("");
 				txtContraseñaUsuario.setText("");
-				new VentanaMenu(this); //Creo que no hace falta decir a donde lleva XD
+			//	new VentanaMenu(this); //Creo que no hace falta decir a donde lleva XD
 				this.setVisible(false);
 			}
 		}

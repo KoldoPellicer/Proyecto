@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
+import Logica.Usuario;
+
 //import logicaUsuario;
 
 public class GestionFicheros{
@@ -36,7 +38,7 @@ public class GestionFicheros{
 			aux = (Usuario)ois.readObject();
 			while(!enc && aux!=null)
 			{
-				if(nom.equalsIgnoreCase(aux.getNom()) && con.equals(aux.getContrasenia()))
+				if(nom.equalsIgnoreCase(aux.getNom()) && con.equals(aux.getContraseña()))
 					enc=true;
 				else
 					aux=(Usuario)ois.readObject();
